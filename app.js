@@ -2,14 +2,16 @@ const express = require('express');
 const morgan = require('morgan');
 const mongoose = require('mongoose');
 const blogRoutes = require('./routes/blogRoutes');
+const dotenv = require('dotenv');
 
 //express app
 const app = express();
 
 //connect to mongo db
-const dbURI = 'mongodb+srv://eibiel:nodepass@nodeblog.p8xzi.mongodb.net/nodeblog?retryWrites=true&w=majority';
+dotenv.config({path: './bin/.env'});
+const dbURI = process.env.APP_DATABASE_URL;
 mongoose.connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then((result) => app.listen(3000))
+    .then((result) => app.listen(process.env.APP_PORT))
     .catch((err) => console.log(err));
 
 //register view engine
