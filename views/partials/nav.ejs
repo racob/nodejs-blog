@@ -1,0 +1,25 @@
+<script>
+  var isActive = false;
+  function toggleActive() {
+    let menu = document.getElementById('navMenu')
+    isActive = !isActive;
+    isActive ? menu.classList.add('is-active') : menu.classList.remove('is-active');
+    console.log(menu);
+  };
+</script>
+<nav class="navbar is-primary" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a class="navbar-item is-size-4 is-uppercase has-text-weight-semibold" href="/">Node Blog</a>
+    <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navMenu" onclick="toggleActive()">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div id="navMenu" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item" href="/about">About</a>
+      <a class="navbar-item" href="/new-blog">New Blog</a>
+    </div>
+  </div>
+</nav>

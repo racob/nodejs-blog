@@ -1,0 +1,39 @@
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+
+<body class="has-background-light">
+  <%- include("./partials/nav.ejs") %>
+  <section class="section">
+    <div class="container is-max-desktop">
+      <p class="title mb-5">Create a new blog</p>
+      <form action="/blogs" method="POST">
+        <div class="field">
+          <label class="label">Blog title</label>
+          <div class="control">
+            <input class="input" type="text" id="title" name="title" required placeholder="What's the title of the blog?">
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Blog snippet</label>
+          <div class="control">
+            <input class="input" type="text" id="snippet" name="snippet" required placeholder="What's the snippet for preview?">
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Blog body</label>
+          <div class="control">
+            <textarea class="textarea" id="body" name="body" placeholder="Write  here..."></textarea>
+          </div>
+        </div>
+        <div class="field is-grouped is-grouped-right">
+          <p class="control">
+            <button class="button is-primary">Submit</button>
+          </p>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <%- include("./partials/footer.ejs") %>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<html lang="en">
+<%- include("./partials/head.ejs") %>
+
+<body class="has-background-light">
+    <%- include("./partials/nav.ejs") %>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <h2 class="title"><%= blog.title %></h2>
+            <h6 class="subtitle is-italic has-text-weight-light is-6"><%= blog.createdAt %></h6>
+            <p><%= blog.body %></p>
+            <div class="field is-grouped is-grouped-right">
+                <p class="control">
+                  <a class="button is-danger is-outlined mt-5" data-doc="<%= blog.id %>">Delete blog</a>
+                </p>
+              </div>
+        </div>
+    </section>
+
+    <%- include("./partials/footer.ejs") %>
+    <script>
+        const deleteButton = document.querySelector('a.button');
+
+        deleteButton.addEventListener('click', (e) => {
+            const endpoint = `/blogs/${deleteButton.dataset.doc}`;
+            fetch(endpoint, {
+                method: 'DELETE'
+            })
+            .then((res) => res.json())
+            .then((data) => window.location.href = data.redirect)
+            .catch((err) => {
+                console.log(err);
+            })
+        })
+    </script>
+</body>
+</html>
